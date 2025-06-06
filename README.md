@@ -101,6 +101,62 @@ go mod tidy
 
 ---
 
+## 📌 Routes Overview
+
+The API is organized into modular route groups:
+
+### 🔐 Auth Routes
+
+> Handles user authentication
+
+| Method | Endpoint         | Description         |
+| ------ | ---------------- | ------------------- |
+| POST   | `/auth/login`    | Log in a user       |
+| POST   | `/auth/register` | Register a new user |
+
+---
+
+### 📋 Menu Routes
+
+> Manages menu items in the restaurant
+
+| Method | Endpoint    | Description                      |
+| ------ | ----------- | -------------------------------- |
+| GET    | `/menu/`    | Get all menu items               |
+| GET    | `/menu/:id` | Get details of a menu item by ID |
+| POST   | `/menu/`    | Create a new menu item           |
+| PUT    | `/menu/:id` | Update a menu item by ID         |
+| DELETE | `/menu/:id` | Delete a menu item by ID         |
+
+---
+
+### 🛒 Order Routes
+
+> Manages customer orders
+
+| Method | Endpoint            | Description              |
+| ------ | ------------------- | ------------------------ |
+| GET    | `/order/`           | Get all orders           |
+| GET    | `/order/:id`        | Get order details by ID  |
+| GET    | `/checkout/order/:id` | Marks an order a complete |
+| POST   | `/order/`           | Create a new order       |
+| PUT    | `/order/:id`        | Update an existing order |
+| DELETE | `/order/:id`        | Delete an order by ID    |
+
+---
+
+### 👤 User Routes
+
+> Handles user management
+
+| Method | Endpoint    | Description            |
+| ------ | ----------- | ---------------------- |
+| GET    | `/user/`    | Get all users          |
+| GET    | `/user/:id` | Get user details by ID |
+| DELETE | `/user/:id` | Delete a user by ID    |
+
+---
+
 ## 📌 TODO
 * Implement authentication middeware
 * Implement some admin features

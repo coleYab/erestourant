@@ -15,7 +15,7 @@ func NewOrderRoutes(e *gin.Engine) *OrderRoutes {
 
 func (r *OrderRoutes) RegisterRoutes(menuHandler *handler.OrderHandler) {
 	r.e.GET("/order/", menuHandler.GetOrders)
-	r.e.GET("/verify/order/:id", menuHandler.ValidateOrder)
+	r.e.GET("/checkout/order/:id", menuHandler.ValidateOrder)
 	r.e.GET("/order/:id", menuHandler.GetDetails)
 	r.e.POST("/order/", menuHandler.CreateOrder)
 	r.e.DELETE("/order/:id", menuHandler.DeleteOrder)
