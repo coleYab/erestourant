@@ -1,19 +1,21 @@
 package main
 
 import (
-	"net/http"
+	"log"
 
-	"github.com/gin-gonic/gin"
+	"github.com/coleYab/erestourant/config"
+	"github.com/coleYab/erestourant/internal/db"
+	"github.com/coleYab/erestourant/internal/db/repository"
+	"github.com/coleYab/erestourant/internal/server"
 )
 
 func main() {
-	router := gin.Default()
-
-	router.GET("/home", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "Hello World",
-		})
-	})
-
-	router.Run()
+	conn, err := db.ConnectToDb(config.Cfg.DbConnString)
+	if err != nil {
+		log.Fatalf("Unable to connect to the database %v", err.Error())
+	}
+	qry := repository.New(conn)
+	srv := server.New(config.Cfg.Port, qry)
+	srv.RegisterRoutes()
+	srv.Run()
 }

@@ -1,7 +1,7 @@
 build:
 	go build -o ./build/erestourant cmd/api/main.go
 
-run: build
+run: clear build
 	./build/erestourant
 
 clear:
